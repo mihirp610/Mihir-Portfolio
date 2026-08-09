@@ -162,6 +162,8 @@ export function AnimatedTextarea({
         style={{ width: "100%" }}
       />
 
+       
+
       {hint ? (
         <motion.p
           initial={{ opacity: 0 }}

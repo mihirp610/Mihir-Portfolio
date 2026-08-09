@@ -28,7 +28,7 @@ export function Footer() {
           © 2026 Mihir Prajapati · All rights reserved
         </p>
         <p className="font-cond text-muted-foreground text-[0.65rem]">
-          Open to relocation across Canada
+          Made with precision by Wizzac. 
         </p>
       </div>
     </footer>

@@ -68,9 +68,9 @@ export function Experience() {
                 <div className="font-cond text-amber text-[0.7rem]">{e.period}</div>
                 <div className="font-cond text-muted-foreground text-[0.65rem] mt-2">{e.loc}</div>
               </div>
-              <div className="relative">
+              <div className="relative min-w-0">
                 <span className="absolute -left-[5vw] md:left-1/2 md:-translate-x-1/2 top-3 w-3 h-3 rounded-full bg-amber shadow-[0_0_0_4px_var(--background)]" />
-                <GlassCard className="p-8 lg:p-10 md:ml-8">
+                <GlassCard className="w-full min-w-[17rem] p-8 md:min-w-0 lg:p-10 md:ml-8">
                   <div className="md:hidden font-cond text-amber text-[0.65rem] mb-2">
                     {e.period} · {e.loc}
                   </div>
