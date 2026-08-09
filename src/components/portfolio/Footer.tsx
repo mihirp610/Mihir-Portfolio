@@ -28,7 +28,15 @@ export function Footer() {
           © 2026 Mihir Prajapati · All rights reserved
         </p>
         <p className="font-cond text-muted-foreground text-[0.65rem]">
-          Made with precision by Wizzac. 
+          Made with precision by{" "}
+          <a
+            href="https://github.com/wizzacx"
+            target="_blank"
+            rel="noreferrer"
+            className="text-inherit transition-colors duration-200 hover:[color:var(--color-primary)]"
+          >
+            Wizzac.
+          </a>
         </p>
       </div>
     </footer>
