@@ -109,14 +109,14 @@ export function CircularGalleryEngine<T>({
           onDragEnd={onDragEnd}
         >
           <div className="relative w-0 h-0" style={{ transformStyle: "preserve-3d" }}>
-              {/* measurement element to compute card width for spacing */}
-              <div
-                ref={measureRef}
-                aria-hidden
-                className={`absolute left-0 top-0 pointer-events-none invisible ${cardWidthClass} ${aspectClass}`}
-                style={{ transformStyle: "preserve-3d" }}
-              />
-              {items.map((item, i) => {
+            {/* measurement element to compute card width for spacing */}
+            <div
+              ref={measureRef}
+              aria-hidden
+              className={`absolute left-0 top-0 pointer-events-none invisible ${cardWidthClass} ${aspectClass}`}
+              style={{ transformStyle: "preserve-3d" }}
+            />
+            {items.map((item, i) => {
               const offset = i - active;
               const distance = Math.abs(offset);
               const arcY = distance * distance * 28;

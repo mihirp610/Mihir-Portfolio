@@ -46,7 +46,8 @@ export function TextScramble({
   const displayRef = useRef(defaultText);
   const hoveredRef = useRef(false);
   const rafRef = useRef(0);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(0);
+  // An undefined ref represents no scheduled phrase.
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const phraseIndexRef = useRef(0);
 
   const setDisplayBoth = (text: string) => {

@@ -7,9 +7,7 @@ const githubPagesBasepath = "/Mihir-Portfolio";
 const getBasepath = () => {
   if (typeof window === "undefined") return "/";
 
-  return window.location.pathname.startsWith(`${githubPagesBasepath}/`)
-    ? githubPagesBasepath
-    : "/";
+  return window.location.pathname.startsWith(`${githubPagesBasepath}/`) ? githubPagesBasepath : "/";
 };
 
 export const getRouter = () => {

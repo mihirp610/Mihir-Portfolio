@@ -12,7 +12,14 @@ type RevealProps = {
   once?: boolean;
 };
 
-export function Reveal({ children, delay = 0, y = 28, duration = 0.9, className, once = true }: RevealProps) {
+export function Reveal({
+  children,
+  delay = 0,
+  y = 28,
+  duration = 0.9,
+  className,
+  once = true,
+}: RevealProps) {
   return (
     <motion.div
       className={className}
@@ -35,7 +42,13 @@ const child: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.85, ease: EASE } },
 };
 
-export function RevealStagger({ children, className }: { children: ReactNode; className?: string }) {
+export function RevealStagger({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <motion.div
       className={className}
