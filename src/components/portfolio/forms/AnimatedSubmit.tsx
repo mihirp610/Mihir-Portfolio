@@ -1,4 +1,5 @@
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 const EASE = [0.22, 0.65, 0.2, 1] as const;
 
@@ -90,11 +91,13 @@ export function AnimatedSubmit({ status, disabled }: { status: Status; disabled?
             transition={{ duration: 0.3, ease: EASE }}
             style={{ color: isSent ? "var(--color-primary)" : "var(--color-foreground)" }}
           >
-            {isSent ? "Message sent" : isSending ? "Sending…" : "Send message"}
+            {isSent ? "Email client opened" : isSending ? "Preparing email…" : "Send message"}
           </motion.span>
         </AnimatePresence>
         <span className="block mt-1 text-muted-foreground text-[0.65rem] font-light normal-case tracking-normal">
-          {isSent ? "Thanks — I'll get back to you soon." : "Typically replies within 24–48 hours"}
+          {isSent
+            ? "Review and send the draft in your email app."
+            : "Typically replies within 24–48 hours"}
         </span>
       </span>
     </motion.button>

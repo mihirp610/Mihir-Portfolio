@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { useId, useState, type InputHTMLAttributes, type TextareaHTMLAttributes } from "react";
 
 const EASE = [0.22, 0.65, 0.2, 1] as const;

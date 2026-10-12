@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 
 export type CircularGalleryEngineProps<T> = {
@@ -190,7 +191,7 @@ export function CircularGalleryEngine<T>({
                 onClick={() => goToIndex(i)}
                 aria-label={`Slide ${i + 1}`}
                 aria-current={i === active ? "true" : undefined}
-                className="flex items-center p-2"
+                className="flex min-h-11 min-w-11 items-center justify-center p-3"
               >
                 <span
                   className="h-px transition-all duration-400"

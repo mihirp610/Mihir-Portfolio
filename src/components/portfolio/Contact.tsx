@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { BlurText } from "./primitives/BlurText";
 import { Reveal, RevealItem, RevealStagger } from "./motion-primitives";
 import { ContactForm } from "./forms/ContactForm";

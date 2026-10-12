@@ -10,7 +10,14 @@
     "build:dev": "npm run typecheck && vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint src vite.config.ts eslint.config.js",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "git config core.hooksPath .githooks || true",
+    "test:ux": "playwright test",
+    "test:ux:mobile": "playwright test --grep @mobile",
+    "test:ux:visual": "playwright test tests/ux/visual.spec.ts",
+    "test:a11y": "playwright test tests/ux/a11y.spec.ts",
+    "test:ux:smoke": "playwright test --project=chromium-390x844 --grep @smoke",
+    "test:ux:update-snapshots": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",
@@ -71,7 +78,9 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^9.32.0",
+    "@playwright/test": "^1.64.0",
     "@types/node": "^22.16.5",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",

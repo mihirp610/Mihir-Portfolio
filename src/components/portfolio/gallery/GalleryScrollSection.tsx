@@ -79,9 +79,7 @@ export function GalleryScrollSection({
           <span className="font-cond text-[0.65rem] text-muted-foreground tracking-widest">
             {String(activeIndex + 1).padStart(2, "0")} / {String(stepCount).padStart(2, "0")}
           </span>
-          <span className="font-cond text-[0.6rem] text-muted-foreground/70">
-            Scroll to explore
-          </span>
+          <span className="font-cond text-[0.6rem] text-muted-foreground">Scroll to explore</span>
         </div>
         <div className="absolute bottom-[4vh] left-[5vw] right-[5vw] h-px bg-border/40 overflow-hidden">
           <motion.div className="h-full bg-amber origin-left" style={{ scaleX: progress }} />

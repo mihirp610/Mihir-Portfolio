@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { useState } from "react";
 import { AnimatedField, AnimatedTextarea } from "./AnimatedField";
 import { AnimatedSubmit } from "./AnimatedSubmit";
@@ -15,8 +16,20 @@ export function ContactForm() {
     e.preventDefault();
     if (status !== "idle") return;
 
+    const form = new FormData(e.currentTarget);
+    const name = String(form.get("name") ?? "");
+    const email = String(form.get("email") ?? "");
+    const message = String(form.get("message") ?? "");
     setStatus("sending");
-    window.setTimeout(() => setStatus("sent"), reduceMotion ? 200 : 900);
+    window.setTimeout(
+      () => {
+        setStatus("sent");
+        window.location.assign(
+          `mailto:prajapatimihir24@gmail.com?subject=${encodeURIComponent(`Portfolio enquiry from ${name}`)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`,
+        );
+      },
+      reduceMotion ? 200 : 900,
+    );
   };
 
   return (
@@ -66,7 +79,7 @@ export function ContactForm() {
         className="sr-only"
         animate={{ opacity: status === "sent" ? 1 : 0 }}
       >
-        {status === "sent" ? "Form submitted successfully." : ""}
+        {status === "sent" ? "Email client opened with your message draft." : ""}
       </motion.p>
     </motion.form>
   );

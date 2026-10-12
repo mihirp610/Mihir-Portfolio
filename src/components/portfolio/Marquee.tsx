@@ -17,7 +17,8 @@ export function Marquee() {
         {row.concat(row).map((s, i) => (
           <span
             key={i}
-            className="font-display text-[clamp(2.5rem,6vw,5rem)] mx-10 text-muted-foreground/15 inline-flex items-center gap-10"
+            aria-hidden
+            className="font-display text-[clamp(2.5rem,6vw,5rem)] mx-10 text-muted-foreground/65 inline-flex items-center gap-10"
           >
             {s} <span className="text-amber/40">◆</span>
           </span>

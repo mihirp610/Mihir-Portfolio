@@ -49,7 +49,7 @@
   --secondary: oklch(0.58 0.165 45);
   --secondary-foreground: oklch(0.945 0.012 80);
   --muted: oklch(0.255 0 0);
-  --muted-foreground: oklch(0.55 0 0);
+  --muted-foreground: oklch(0.63 0 0);
   --accent: oklch(0.78 0.155 70);
   --accent-foreground: oklch(0.145 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -74,6 +74,13 @@
     overflow-x: hidden;
   }
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: 0.01em; line-height: 0.92; }
+  :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 4px; }
+  section[id] { scroll-margin-top: 6rem; }
+
+  @media (hover: none) and (pointer: coarse) {
+    a, button { min-width: 44px; min-height: 44px; }
+    a { display: inline-flex; align-items: center; }
+  }
 }
 
 @layer utilities {

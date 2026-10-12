@@ -16,6 +16,10 @@ dist-ssr
 .nitro
 *.local
 
+# Playwright runtime output (visual baselines under tests/ux are intentionally tracked)
+playwright-report/
+test-results/
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars

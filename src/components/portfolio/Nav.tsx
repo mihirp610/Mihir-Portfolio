@@ -32,7 +32,7 @@ export function Nav() {
         }}
       >
         <div className="flex items-center justify-between px-[5vw] py-5">
-          <a href="#top" className="flex items-center gap-3">
+          <a href="#top" className="flex min-h-11 items-center gap-3">
             {ready ? (
               <motion.span
                 layoutId="brand-mark"
@@ -71,20 +71,25 @@ export function Nav() {
           </a>
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden font-cond text-foreground"
+            className="md:hidden min-h-11 min-w-11 font-cond text-foreground"
             aria-label="Menu"
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
           >
             {open ? "CLOSE" : "MENU"}
           </button>
         </div>
         {open && (
-          <div className="md:hidden bg-background border-t border-border px-[5vw] py-8 flex flex-col gap-6">
+          <div
+            id="mobile-navigation"
+            className="md:hidden bg-background border-t border-border px-[5vw] py-8 flex flex-col gap-3"
+          >
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="font-display text-3xl text-foreground"
+                className="flex min-h-11 items-center font-display text-3xl text-foreground"
               >
                 {l.label}
               </a>
