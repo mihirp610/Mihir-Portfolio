@@ -62,19 +62,19 @@ export function Experience() {
           {exp.map((e, i) => (
             <div
               key={e.n}
-              className={`relative grid grid-cols-[24px_1fr] md:grid-cols-2 md:gap-16 items-start ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
+              className={`relative grid grid-cols-[24px_minmax(0,1fr)] md:grid-cols-2 md:gap-16 items-start ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
             >
-              <div className={`hidden md:block ${i % 2 === 0 ? "text-right pr-12" : "pl-12"}`}>
+              <div className={`invisible md:visible ${i % 2 === 0 ? "text-right pr-12" : "pl-12"}`}>
                 <div className="font-cond text-amber text-[0.7rem]">{e.period}</div>
                 <div className="font-cond text-muted-foreground text-[0.65rem] mt-2">{e.loc}</div>
               </div>
               <div className="relative min-w-0">
                 <span className="absolute -left-[5vw] md:left-1/2 md:-translate-x-1/2 top-3 w-3 h-3 rounded-full bg-amber shadow-[0_0_0_4px_var(--background)]" />
-                <GlassCard className="w-full min-w-[17rem] p-8 md:min-w-0 lg:p-10 md:ml-8">
+                <GlassCard className="experience-card w-full min-w-0 p-5 sm:p-8 md:ml-8 lg:p-10">
                   <div className="md:hidden font-cond text-amber text-[0.65rem] mb-2">
                     {e.period} · {e.loc}
                   </div>
-                  <h3 className="font-display text-3xl text-foreground">{e.company}</h3>
+                  <h3 className="font-display text-2xl text-foreground sm:text-3xl">{e.company}</h3>
                   <p className="text-muted-foreground text-sm mt-2">{e.role}</p>
                   <ul className="mt-6 space-y-3">
                     {e.points.map((p, j) => (

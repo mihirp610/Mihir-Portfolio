@@ -1,6 +1,41 @@
 import { expect, test, openHome } from "./fixtures";
 
 test.describe("frustrated-user flows @smoke", () => {
+  test("experience banners fit the available phone width @mobile", async ({ page }) => {
+    const viewportWidth = test.info().project.use.viewport!.width;
+    test.skip(
+      !test.info().project.use.hasTouch,
+      "Responsive banner check applies to touch projects.",
+    );
+    test.skip(viewportWidth >= 768, "This checks the single-column phone layout.");
+    await openHome(page);
+    const experience = page.locator("#experience");
+    await experience.scrollIntoViewIfNeeded();
+
+    const banners = await experience.locator(".experience-card").evaluateAll((elements) =>
+      elements.map((element) => {
+        const column = element.parentElement;
+        if (!(element instanceof HTMLElement) || !(column instanceof HTMLElement)) {
+          throw new Error("Experience banner must be inside a layout column.");
+        }
+        return {
+          cardWidth: element.offsetWidth,
+          columnWidth: column.clientWidth,
+          right: element.getBoundingClientRect().right,
+        };
+      }),
+    );
+
+    expect(banners).toHaveLength(3);
+    for (const banner of banners) {
+      expect(
+        Math.abs(banner.cardWidth - banner.columnWidth),
+        `Banner width ${banner.cardWidth}px does not match column width ${banner.columnWidth}px.`,
+      ).toBeLessThan(1);
+      expect(banner.right).toBeLessThanOrEqual(viewportWidth + 1);
+    }
+  });
+
   test("navigation remains usable after rapid menu interaction @mobile", async ({ page }) => {
     test.skip(!test.info().project.use.hasTouch, "Mobile-menu flow applies to touch projects.");
     await openHome(page);
