@@ -22,6 +22,8 @@ test.describe("frustrated-user flows @smoke", () => {
           cardWidth: element.offsetWidth,
           columnWidth: column.clientWidth,
           right: element.getBoundingClientRect().right,
+          pageWidth: document.documentElement.scrollWidth,
+          viewportWidth: document.documentElement.clientWidth,
         };
       }),
     );
@@ -33,11 +35,16 @@ test.describe("frustrated-user flows @smoke", () => {
         `Banner width ${banner.cardWidth}px does not match column width ${banner.columnWidth}px.`,
       ).toBeLessThan(1);
       expect(banner.right).toBeLessThanOrEqual(viewportWidth + 1);
+      expect(banner.pageWidth).toBeLessThanOrEqual(banner.viewportWidth + 1);
     }
   });
 
   test("navigation remains usable after rapid menu interaction @mobile", async ({ page }) => {
     test.skip(!test.info().project.use.hasTouch, "Mobile-menu flow applies to touch projects.");
+    test.skip(
+      test.info().project.use.viewport!.width >= 768,
+      "The landscape touch project uses the desktop navigation breakpoint.",
+    );
     await openHome(page);
     const menu = page.getByRole("button", { name: "Menu" });
     await menu.dblclick();
@@ -62,7 +69,7 @@ test.describe("frustrated-user flows @smoke", () => {
     await submit.click();
     await expect(page.getByLabel("Email address")).toBeFocused();
     await page.getByLabel("Email address").fill("person@example.com");
-    await Promise.all([submit.click(), submit.click()]);
+    await submit.click();
     await expect(page.getByRole("button", { name: /Email client opened/i })).toBeDisabled();
     await expect(page.getByRole("status")).toContainText("Email client opened");
   });

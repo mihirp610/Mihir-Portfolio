@@ -11,6 +11,36 @@
       body {
         overflow-x: clip;
       }
+
+      /* Guard the published Pages timeline against narrow-phone overflow. */
+      @media (max-width: 47.999rem) {
+        #experience .flex.flex-col > .grid {
+          grid-template-columns: 24px minmax(0, 1fr);
+        }
+
+        #experience .flex.flex-col > .grid > :first-child {
+          display: block;
+          visibility: hidden;
+        }
+
+        #experience .experience-card {
+          width: 100%;
+          min-width: 0;
+          padding: 1.25rem;
+        }
+      }
+
+      @media (min-width: 40rem) and (max-width: 47.999rem) {
+        #experience .experience-card {
+          padding: 2rem;
+        }
+      }
+
+      @media (min-width: 48rem) {
+        .md\:visible {
+          visibility: visible;
+        }
+      }
     </style>
   </head>
   <body>
