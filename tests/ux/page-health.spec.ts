@@ -26,12 +26,18 @@ test.describe("page health @smoke", () => {
             (element) =>
               `${element.tagName.toLowerCase()}${element.id ? `#${element.id}` : ""}.${element.className}`,
           );
-        return { scrollWidth: root.scrollWidth, viewport, tooWide };
+        return {
+          scrollWidth: root.scrollWidth,
+          viewport,
+          rootOverflowX: getComputedStyle(root).overflowX,
+          tooWide,
+        };
       });
       expect(
         result.scrollWidth,
         `Overflowing elements: ${result.tooWide.join(", ")}`,
       ).toBeLessThanOrEqual(result.viewport + 1);
+      expect(result.rootOverflowX).toBe("clip");
       await assertCleanRuntime(audit);
     });
 
